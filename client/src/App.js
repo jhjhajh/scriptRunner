@@ -15,7 +15,6 @@ function App() {
         <Route path="/getStarted" element = {<Landing />}/>
         <Route path="/login" element = {<Register />}/>
         <Route path="*" element = {<Error />}/>
-
       </Routes>
     </BrowserRouter>
    
