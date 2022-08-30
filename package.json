@@ -12,11 +12,14 @@
     "http-status-codes": "^2.2.0",
     "mongodb": "^4.8.1",
     "mongoose": "^6.5.3",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.19",
     "validator": "^13.7.0"
   },
   "scripts": {
-    "start": "nodemon server"
+    "server": "nodemon server --ignore client",
+    "client": "npm start --prefix client",
+    "start": "concurrently --kill-others-on-fail \" npm run server\" \" npm run client\""
   },
   "repository": {
     "type": "git",
@@ -28,5 +31,9 @@
   "bugs": {
     "url": "https://github.com/jhjhajh/dso/issues"
   },
-  "homepage": "https://github.com/jhjhajh/dso#readme"
+  "homepage": "https://github.com/jhjhajh/dso#readme",
+  "devDependencies": {
+    "concurrently": "^7.3.0"
+  },
+  "proxy": "http://localhost:5000/"
 }

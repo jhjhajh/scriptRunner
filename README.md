@@ -8,4 +8,11 @@
 3. npm install mongoose
 4. npm install validator
 5. npm install express-async-errors
-npm install http-status-codes
+6. npm install http-status-codes
+
+---------------------------------------
+
+7. npm install jsonwebtoken
+8. npm install concurrently --save-dev
+9. npm install cors (optional)
+10. npm install morgan

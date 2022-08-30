@@ -19,4 +19,7 @@ const UserSchema = new mongoose.Schema({
     },
 })
 
+// UserSchema.methods.createJWT = function() {
+//     console.log(this)
+// }
 export default mongoose.model('User',UserSchema)

@@ -3,6 +3,8 @@ import {useState, useEffect} from 'react'
 import {Alert, FormRow, Logo} from '../components'
 import Wrapper from '../assets/wrappers/RegisterPage'
 import { useAppContext } from '../context/appContext'
+import {Link, Navigate} from 'react-router-dom'
+
 
 
 const initialState = {
@@ -34,7 +36,14 @@ const {isLoading, showAlert, displayAlert} = useAppContext()
       displayAlert()
       return
     }
-    console.log(values)
+    if (username === "admin" && password === "admin") {
+      // change this so that it wont reload the whole page
+      window.location.href='/'
+      console.log("correct")
+    } else {
+      displayAlert()
+    }
+    // console.log(values)
   }
   return (
     <Wrapper className = 'full-page'>
@@ -49,7 +58,7 @@ const {isLoading, showAlert, displayAlert} = useAppContext()
         {showAlert && <Alert/>}
       <FormRow type = "username" name = "username" value = {values.name} handleChange = {handleChange}/>
       <FormRow type = "password" name = "password" value = {values.password} handleChange = {handleChange}/>
-        <button type = "submit" className="btn btn-block"> submit</button>
+        <button type = "submit" className="btn btn-block" onClick ={onSubmit}> submit</button>
         {/* <p>
           <button type="button" onClick={toggleMember} className='member-btn'>Register</button>
         </p> */}

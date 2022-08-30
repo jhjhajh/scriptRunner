@@ -6,11 +6,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element ={<SharedLayout/>}>
+        {/* <Route path="/" element ={<SharedLayout/>}>
         <Route path="stats" element = {<Stats/>}/>
         <Route path="alljobs" element = {<AllJobs/>}/>
         <Route path="addjob" element = {<AddJob/>}/>
-        <Route path="profile" element = {<Profile/>}/>
+        <Route path="profile" element = {<Profile/>}/> */}
+        <Route path="/" element = {<SharedLayout/>}>
+        {/* <Route path="stats" element = {<p> test </p>}/> */}
+        {/* <Route path="alljobs" element = {<p> alljobs </p>}/> */}
         </Route>
         <Route path="/getStarted" element = {<Landing />}/>
         <Route path="/login" element = {<Register />}/>

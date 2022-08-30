@@ -12,7 +12,15 @@ if(!username || !password) {
 
 }
 const login = async (req, res) => {
-    res.send ('login user')
+    const { username, password } = req.body
+    if (!username || !password) {
+        throw new BadRequestError('Please input username and password')
+    }
+
+    if (username === "admin" && password === "admin") {
+        //token thingy
+    }
+    // res.send ('login user')
 }
 
 const updateUser = async (req, res) => {
