@@ -15,7 +15,6 @@
     "nodemon": "^2.0.19",
     "validator": "^13.7.0"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "nodemon server"
   },
