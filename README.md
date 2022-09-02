@@ -18,4 +18,3 @@
 10. npm install morgan
 11. npm install react-icons
 12. npm install --save moment react-moment
-13. 
