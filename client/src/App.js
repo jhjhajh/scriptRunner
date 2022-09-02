@@ -6,15 +6,18 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element ={<SharedLayout/>}>
-        <Route path="stats" element = {<Stats/>}/>
-        <Route path="alljobs" element = {<AllJobs/>}/>
-        <Route path="addjob" element = {<AddJob/>}/>
-        <Route path="profile" element = {<Profile/>}/> */}
-        <Route path="/" element = {<SharedLayout/>}>
+      <Route path="/" element = {<Landing />}/>
+        <Route path="/dashboard" element ={<SharedLayout/>}>
+        {/* <Route path="stats" element = {<Stats/>}/> */}
+        <Route path="overview" element = {<Stats/>}/>
+        {/* <Route path="all-jobs" element = {<AllJobs/>}/> */}
+        {/* <Route path="addjob" element = {<AddJob/>}/> */}
+        {/* <Route path="profile" element = {<Profile/>}/> */}
         {/* <Route path="stats" element = {<p> test </p>}/> */}
+        <Route path="addsession" element = {<AddJob/>}/>
         {/* <Route path="alljobs" element = {<p> alljobs </p>}/> */}
         </Route>
+
         <Route path="/getStarted" element = {<Landing />}/>
         <Route path="/login" element = {<Register />}/>
         <Route path="*" element = {<Error />}/>

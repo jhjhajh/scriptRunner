@@ -25,6 +25,7 @@ import {
   SHOW_STATS_SUCCESS,
   CLEAR_FILTERS,
   CHANGE_PAGE,
+  TOGGLE_RUN,
 } from './actions'
 
 import { initialState } from './appContext'
@@ -103,6 +104,13 @@ const reducer = (state, action) => {
       alertText: 'User Profile Updated!',
     }
   }
+if (action.type === TOGGLE_RUN) {
+  return {
+    ...state,
+    running: !state.running
+  }
+}
+
   if (action.type === UPDATE_USER_ERROR) {
     return {
       ...state,

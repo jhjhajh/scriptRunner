@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useAppContext } from '../../context/appContext'
-// import { StatsContainer, Loading, ChartsContainer } from '../../components'
+import { StatsContainer, Loading } from '../../components'
 // import React from "react"
 // import raw from '../../script/test.txt';
 import Wrapper from '../../assets/wrappers/DashboardFormPage'
@@ -16,36 +16,33 @@ import Wrapper from '../../assets/wrappers/DashboardFormPage'
 
 
 const Stats = () => {
-    <div>stats</div>
-//   const { showStats, isLoading, monthlyApplications } = useAppContext()
+  const { showStats, isLoading } = useAppContext()
 
-//   useEffect(() => {
-//     showStats()
-//     // eslint-disable-next-line
-//   }, [])
-//   if (isLoading) {
-//     return <Loading center />
-//   }
+  // useEffect(() => {
+  //   showStats()
+  //   // eslint-disable-next-line
+  // }, [])
+  if (isLoading) {
+    return <Loading center />
+  }
   return (
-    <div>stats</div>
-
-//     <>
-//       <StatsContainer />
-//       {monthlyApplications.length > 0 && <ChartsContainer />}
-//       <Wrapper>
-//          <div className='form-center'>
-//       {/* <button
-//               type='submit'
-//               className='btn btn-block submit-btn'
-//               // onClick={child.exec(ls)}
-//               // onClick={handleSubmit}
-//               // disabled={isLoading}
-//             >
-//               Start
-//             </button> */}
-//     </div></Wrapper>
+    <>
+      <StatsContainer />
+      {/* { <ChartsContainer />} */}
+      {/* <Wrapper>
+         <div className='form-center'>
+      <button
+              type='submit'
+              className='btn btn-block submit-btn'
+              // onClick={child.exec(ls)}
+              // onClick={handleSubmit}
+              // disabled={isLoading}
+            >
+              Start
+            </button>
+    </div></Wrapper> */}
      
-//     </>
+    </>
   )
 }
 

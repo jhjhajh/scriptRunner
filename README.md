@@ -16,3 +16,5 @@
 8. npm install concurrently --save-dev
 9. npm install cors (optional)
 10. npm install morgan
+11. npm install react-icons
+12. npm install --save moment react-moment

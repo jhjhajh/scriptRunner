@@ -38,7 +38,7 @@ const {isLoading, showAlert, displayAlert} = useAppContext()
     }
     if (username === "admin" && password === "admin") {
       // change this so that it wont reload the whole page
-      window.location.href='/'
+      window.location.href='/dashboard'
       console.log("correct")
     } else {
       displayAlert()
