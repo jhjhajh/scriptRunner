@@ -5,8 +5,8 @@ import subprocess as sub
 from tkinter import *
 import webbrowser
 import shlex
-import * from run.py
-
+from run import *
+from window import *
 
 customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
@@ -57,7 +57,7 @@ class App(customtkinter.CTk):
 
         self.button_2 = customtkinter.CTkButton(master=self.frame_left,
                                                 text="Lorem ipsum",
-                                                command=self.button_event)
+                                                command=button_event)
         self.button_2.grid(row=3, column=0, pady=10, padx=20)
         
         self.button_readme = customtkinter.CTkButton(master=self.frame_left,
@@ -70,7 +70,7 @@ class App(customtkinter.CTk):
 
         self.optionmenu_1 = customtkinter.CTkOptionMenu(master=self.frame_left,
                                                         values=["Light", "Dark", "System"],
-                                                        command=self.change_appearance_mode)
+                                                        command=change_appearance_mode)
         self.optionmenu_1.grid(row=10, column=0, pady=10, padx=20, sticky="w")
 
         # ============ frame_right ============
@@ -115,50 +115,12 @@ class App(customtkinter.CTk):
                                                 text="Add Emulation",
                                                 border_width=2,  # <- custom border_width
                                                 fg_color=None,  # <- no fg_color
-                                                command=self.add_emulation)
+                                                command=add_emulation)
         self.button_5.grid(row=8, column=1, pady=10, padx=10)
-
-
-    def button_event(self):
-        print("Button pressed")
-        
-    def change_appearance_mode(self, new_appearance_mode):
-        customtkinter.set_appearance_mode(new_appearance_mode)
-
+    
     def on_closing(self, event=0):
         self.destroy()
-    
-    def add_emulation(self):
-        window = customtkinter.CTkToplevel(self)
-        window.geometry("600x300")
-        window.title("Add Emulation Flow")
-        window.grid_columnconfigure(0, weight=1)
-        window.grid_rowconfigure(0, weight=1)
 
-        label_mode = customtkinter.CTkLabel(master=window, text="Enter Flow Name:")
-        label_mode.grid(row=1, column=0, pady=0, padx=20, sticky="w")        
-        entry_1 = customtkinter.CTkEntry(master=window,
-                                       placeholder_text="Name",
-                                       width=120,
-                                       height=25,
-                                       border_width=2,
-                                       corner_radius=10)
-        entry_1.grid(row=2, column=0, columnspan=2, pady=0, padx=20, sticky="we")    
-        lab = customtkinter.CTkLabel(master=window, text="Enter File Path:")
-        lab.grid(row=3, column=0, pady=0, padx=20, sticky="w")          
-        entry_2 = customtkinter.CTkEntry(master=window,
-                                       placeholder_text="File Path",
-                                       width=120,
-                                       height=25,
-                                       border_width=2,
-                                       corner_radius=10)
-        entry_2.grid(row=4, column=0, columnspan=2, pady=0, padx=20, sticky="we")                 
-        button_5 = customtkinter.CTkButton(master=window,
-                                                text="Add",
-                                                border_width=2,  # <- custom border_width
-                                                fg_color=None,  # <- no fg_color
-                                                command=self.button_event)
-        button_5.grid(row=8, column=2, columnspan=1, pady=20, padx=20, sticky="we")
 if __name__ == "__main__":
     app = App()
     app.mainloop()
