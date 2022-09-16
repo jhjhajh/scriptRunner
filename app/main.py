@@ -117,6 +117,7 @@ class App(customtkinter.CTk):
                                                 fg_color=None,  # <- no fg_color
                                                 command=add_emulation)
         self.button_5.grid(row=8, column=1, pady=10, padx=10)
+        # root.after(1000, clock) # run itself again after 1000 ms -->auto update?? idk if this works
     
     def on_closing(self, event=0):
         self.destroy()
