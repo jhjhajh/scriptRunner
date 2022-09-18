@@ -3,13 +3,15 @@ import tkinter.messagebox
 import customtkinter
 import subprocess as sub
 from tkinter import *
-import webbrowser
-import shlex
 from run import *
 from popup import *
+import os
 
 customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
+files=[]
+names=[]
+temp=[]
 
 class App(customtkinter.CTk):
 
@@ -18,6 +20,21 @@ class App(customtkinter.CTk):
 
     def __init__(self):
         super().__init__()
+        # read from file
+        global names
+        global files
+        if os.path.isfile('names.txt'):
+            with open('names.txt', 'r') as f:
+                tempFiles = f.read()
+                tempFiles = tempFiles.splitlines()
+                # tempFiles=[x for x in tempFiles if x.strip()]
+                # print(tempFiles)
+                for temp in tempFiles:
+                    temp=temp.split(',')
+                    print (temp[0])
+                    print (temp[1])
+                    names += [temp[0]]
+                    files += [temp[1]]
 
         self.title("Adversary Emulation")
         self.geometry(f"{App.WIDTH}x{App.HEIGHT}")
@@ -56,10 +73,11 @@ class App(customtkinter.CTk):
         self.button_1.grid(row=2, column=0, pady=10, padx=20)
 
         self.button_2 = customtkinter.CTkButton(master=self.frame_left,
-                                                text="Lorem ipsum",
-                                                command=button_event)
+                                                text="Add Emulation",
+                                                border_width=2,
+                                                fg_color=None,
+                                                command=add_emulation)
         self.button_2.grid(row=3, column=0, pady=10, padx=20)
-        
         self.button_readme = customtkinter.CTkButton(master=self.frame_left,
                                                 text="User Guide",
                                                 command=userguide)
@@ -99,24 +117,27 @@ class App(customtkinter.CTk):
                                                    fg_color=("white", "gray38"),  # <- custom tuple-color
                                                    justify=tkinter.LEFT)
         self.label_info_1.grid(column=0, row=0, sticky="nwe", padx=15, pady=15)
-        self.label_mode = customtkinter.CTkLabel(master=self.frame_right, text="Emulation 1:")
-        self.label_mode.grid(row=4, column=0, pady=0, padx=20, sticky="w")
-#        self.button_3 = customtkinter.CTkButton(master=self.frame_right,
-#                                                text="Start",
-#                                                command=lambda:sub.call('./test.sh'))
-        self.button_3 = customtkinter.CTkButton(master=self.frame_right,
-                                                text="Start",
-                                                command=run)                                                
-        self.button_3.grid(row=5, column=0, pady=0, padx=20)
+        # self.label_mode = customtkinter.CTkLabel(master=self.frame_right, text="Emulation 1:")
+        # self.label_mode.grid(row=4, column=0, pady=0, padx=0, sticky="w")
+        x = 4
+        for name in names:
+            x+=1
+            self.label_mode = customtkinter.CTkLabel(master=self.frame_right, text=name)
+            self.label_mode.grid(row=x, column=0, pady=0, padx=0, sticky="w")
+        # self.button_3 = customtkinter.CTkButton(master=self.frame_right,
+        #                                         text="Start",
+        #                                         command=run)                                                
+        # self.button_3.grid(row=5, column=0, pady=0, padx=0)
+
           
         # set default values
         self.optionmenu_1.set("Dark")
-        self.button_5 = customtkinter.CTkButton(master=self.frame_right,
-                                                text="Add Emulation",
-                                                border_width=2,  # <- custom border_width
-                                                fg_color=None,  # <- no fg_color
-                                                command=add_emulation)
-        self.button_5.grid(row=8, column=1, pady=10, padx=10)
+        # self.button_5 = customtkinter.CTkButton(master=self.frame_right,
+        #                                         text="Add Emulation",
+        #                                         border_width=2,  # <- custom border_width
+        #                                         fg_color=None,  # <- no fg_color
+        #                                         command=add_emulation)
+        # self.button_5.grid(row=8, column=1, pady=10, padx=10)
         # root.after(1000, clock) # run itself again after 1000 ms -->auto update?? idk if this works
     
     def on_closing(self, event=0):
