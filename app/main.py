@@ -1,3 +1,4 @@
+from configparser import ConfigParser
 import tkinter
 import tkinter.messagebox
 import customtkinter
@@ -6,12 +7,13 @@ from tkinter import *
 from run import *
 from popup import *
 import os
+import config
 
 customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
-files=[]
-names=[]
-temp=[]
+# files=[]
+# names=[]
+# temp=[]
 
 class App(customtkinter.CTk):
 
@@ -20,21 +22,20 @@ class App(customtkinter.CTk):
 
     def __init__(self):
         super().__init__()
+        start()
         # read from file
-        global names
-        global files
-        if os.path.isfile('data.txt'):
-            with open('data.txt', 'r') as f:
-                tempFiles = f.read()
-                tempFiles = tempFiles.splitlines()
-                # tempFiles=[x for x in tempFiles if x.strip()]
-                # print(tempFiles)
-                for temp in tempFiles:
-                    temp=temp.split(',')
-                    print (temp[0])
-                    print (temp[1])
-                    names += [temp[0]]
-                    files += [temp[1]]
+        # global names
+        # global files
+        # if os.path.isfile('data.txt'):
+        #     with open('data.txt', 'r') as f:
+        #         tempFiles = f.read()
+        #         tempFiles = tempFiles.splitlines()
+        #         # tempFiles=[x for x in tempFiles if x.strip()]
+        #         # print(tempFiles)
+        #         for temp in tempFiles:
+        #             temp=temp.split(',')
+        #             names += [temp[0]]
+        #             files += [temp[1]]
 
         self.title("Adversary Emulation")
         self.geometry(f"{App.WIDTH}x{App.HEIGHT}")
@@ -94,45 +95,43 @@ class App(customtkinter.CTk):
         # ============ frame_right ============
 
         # configure grid layout (3x7)
-        self.frame_right.rowconfigure((0, 1, 2, 3), weight=1)
-        self.frame_right.rowconfigure(7, weight=10)
+        self.frame_right.rowconfigure((0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10), weight=1)
+        # self.frame_right.rowconfigure(7, weight=10)
         self.frame_right.columnconfigure((0, 1), weight=1)
-        self.frame_right.columnconfigure(2, weight=0)
+        # self.frame_right.columnconfigure(2, weight=0)
 
-        self.frame_info = customtkinter.CTkFrame(master=self.frame_right)
-        self.frame_info.grid(row=0, column=0, columnspan=2, rowspan=4, pady=20, padx=20, sticky="nsew")
+        # self.frame_info = customtkinter.CTkFrame(master=self.frame_right)
+        # self.frame_info.grid(row=0, column=0, columnspan=2, rowspan=4, pady=20, padx=20, sticky="nsew")
 
 
         # ============ frame_info ============
 
         # configure grid layout (1x1)
-        self.frame_info.rowconfigure(0, weight=1)
-        self.frame_info.columnconfigure(0, weight=1)
+        # self.frame_info.rowconfigure(0, weight=1)
+        # self.frame_info.columnconfigure(0, weight=1)
 
-        self.label_info_1 = customtkinter.CTkLabel(master=self.frame_info,
+        self.label_info_1 = customtkinter.CTkLabel(master=self.frame_right,
                                                    text="Adversary Emulation\n",
                                                    height=100,
+                                                   width = self.frame_right.winfo_screenwidth()/2,
                                                    text_font = ("Roboto Medium", 14),
                                                    corner_radius=6,  # <- custom corner radius
                                                    fg_color=("white", "gray38"),  # <- custom tuple-color
-                                                   justify=tkinter.LEFT)
-        self.label_info_1.grid(column=0, row=0, sticky="nwe", padx=15, pady=15)
+                                                   justify=tkinter.CENTER)
+        self.label_info_1.grid(column=0, row=0, sticky="n", padx=10, pady=10)
         # self.label_mode = customtkinter.CTkLabel(master=self.frame_right, text="Emulation 1:")
         # self.label_mode.grid(row=4, column=0, pady=0, padx=0, sticky="w")
         x = 4
         i = ""
-        for name in names:
+        for name in config.names:
             x+=1
             i+=name
             self.label_mode = customtkinter.CTkLabel(master=self.frame_right, text=(name + ":"))
             self.label_mode.grid(row=x, column=0, pady=0, padx=0, sticky="w")
             self.button_3 = customtkinter.CTkButton(master=self.frame_right,
                                                 text="Start",
-                                                command=run)                                                
-            self.button_3.grid(row=x, column=0, pady=0, padx=0)
-            self.space = customtkinter.CTkLabel(master=self.frame_right, text=" \n\n")
-            self.label_mode.grid(row=x, column=0, pady=5, padx=0, sticky="w")
-
+                                                command=run(i))                                                
+            self.button_3.grid(row=x, column=0, pady=5, padx=0)
           
         # set default values
         self.optionmenu_1.set("Dark")
@@ -143,12 +142,11 @@ class App(customtkinter.CTk):
         #                                         command=add_emulation)
         # self.button_5.grid(row=8, column=1, pady=10, padx=10)
         # root.after(1000, clock) # run itself again after 1000 ms -->auto update?? idk if this works
-    
     def on_closing(self, event=0):
-        x = len(names)
+        x = len(config.names)
         with open('data.txt', 'w') as f:
             for i in range(x):
-                f.write(names[i] + ',' + files[i]+'\n')
+                f.write(config.names[i] + ',' + config.files[i]+'\n')
         self.destroy()
 
 if __name__ == "__main__":

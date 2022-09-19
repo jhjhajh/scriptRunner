@@ -1,2 +1,4 @@
 emulation 1,/Users/jiahui/desktop/jiahui/work/internships/now/dso/work/platform/dso/app/main.py
 emulation 2,/Users/jiahui/desktop/jiahui/work/internships/now/dso/work/platform/dso/app/run.sh
+emulation 3,/Users/jiahui/desktop/jiahui/work/internships/now/dso/work/platform/dso/app/readme.md
+emulation 4,/Users/jiahui/desktop/jiahui/work/internships/now/dso/work/platform/dso/app/readme.md

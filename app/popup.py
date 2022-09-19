@@ -1,8 +1,7 @@
-import subprocess as sub
-import webbrowser
-import shlex
 import customtkinter
 from add import *
+import config
+from tkinter import * 
 
 def add_emulation():
 
@@ -40,6 +39,13 @@ def add_emulation():
                                              border_width=2,  # <- custom border_width
                                              fg_color=None,  # <- no fg_color
                                              #command=addFlow(entry_name, entry_file)
+                                             command=appendList(entry_name, add_file_button, window)
                                              )
     add_button.grid(row=2, column=1, columnspan=2, pady=20, padx=20, sticky="se")
 
+def appendList(entry_name, add_file_button, window):
+    config.names += [entry_name]
+    config.files += [add_file_button]
+    print(config.names)
+    print(config.files)
+    window.destroy
