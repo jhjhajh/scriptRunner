@@ -23,8 +23,8 @@ class App(customtkinter.CTk):
         # read from file
         global names
         global files
-        if os.path.isfile('names.txt'):
-            with open('names.txt', 'r') as f:
+        if os.path.isfile('data.txt'):
+            with open('data.txt', 'r') as f:
                 tempFiles = f.read()
                 tempFiles = tempFiles.splitlines()
                 # tempFiles=[x for x in tempFiles if x.strip()]
@@ -120,14 +120,18 @@ class App(customtkinter.CTk):
         # self.label_mode = customtkinter.CTkLabel(master=self.frame_right, text="Emulation 1:")
         # self.label_mode.grid(row=4, column=0, pady=0, padx=0, sticky="w")
         x = 4
+        i = ""
         for name in names:
             x+=1
-            self.label_mode = customtkinter.CTkLabel(master=self.frame_right, text=name)
+            i+=name
+            self.label_mode = customtkinter.CTkLabel(master=self.frame_right, text=(name + ":"))
             self.label_mode.grid(row=x, column=0, pady=0, padx=0, sticky="w")
-        # self.button_3 = customtkinter.CTkButton(master=self.frame_right,
-        #                                         text="Start",
-        #                                         command=run)                                                
-        # self.button_3.grid(row=5, column=0, pady=0, padx=0)
+            self.button_3 = customtkinter.CTkButton(master=self.frame_right,
+                                                text="Start",
+                                                command=run)                                                
+            self.button_3.grid(row=x, column=0, pady=0, padx=0)
+            self.space = customtkinter.CTkLabel(master=self.frame_right, text=" \n\n")
+            self.label_mode.grid(row=x, column=0, pady=5, padx=0, sticky="w")
 
           
         # set default values
@@ -141,6 +145,10 @@ class App(customtkinter.CTk):
         # root.after(1000, clock) # run itself again after 1000 ms -->auto update?? idk if this works
     
     def on_closing(self, event=0):
+        x = len(names)
+        with open('data.txt', 'w') as f:
+            for i in range(x):
+                f.write(names[i] + ',' + files[i]+'\n')
         self.destroy()
 
 if __name__ == "__main__":
