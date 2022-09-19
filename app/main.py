@@ -6,7 +6,6 @@ import subprocess as sub
 from tkinter import *
 from run import *
 from popup import *
-import os
 import config
 
 customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
@@ -63,22 +62,22 @@ class App(customtkinter.CTk):
         self.frame_left.grid_rowconfigure(8, minsize=20)    # empty row with minsize as spacing
         self.frame_left.grid_rowconfigure(11, minsize=10)  # empty row with minsize as spacing
 
-        self.label_1 = customtkinter.CTkLabel(master=self.frame_left,
+        self.label_sidebar = customtkinter.CTkLabel(master=self.frame_left,
                                               text="Side Bar",
                                               text_font=("Roboto Medium", -16))  # font name and size in px
-        self.label_1.grid(row=1, column=0, pady=10, padx=10)
+        self.label_sidebar.grid(row=1, column=0, pady=10, padx=10)
 
-        self.button_1 = customtkinter.CTkButton(master=self.frame_left,
+        self.button_closeApp = customtkinter.CTkButton(master=self.frame_left,
                                                 text="Close App",
                                                 command=self.on_closing)
-        self.button_1.grid(row=2, column=0, pady=10, padx=20)
+        self.button_closeApp.grid(row=2, column=0, pady=10, padx=20)
 
-        self.button_2 = customtkinter.CTkButton(master=self.frame_left,
+        self.button_AddFlow = customtkinter.CTkButton(master=self.frame_left,
                                                 text="Add Emulation",
                                                 border_width=2,
                                                 fg_color=None,
                                                 command=add_emulation)
-        self.button_2.grid(row=3, column=0, pady=10, padx=20)
+        self.button_AddFlow.grid(row=3, column=0, pady=10, padx=20)
         self.button_readme = customtkinter.CTkButton(master=self.frame_left,
                                                 text="User Guide",
                                                 command=userguide)
@@ -123,15 +122,26 @@ class App(customtkinter.CTk):
         # self.label_mode.grid(row=4, column=0, pady=0, padx=0, sticky="w")
         x = 4
         i = ""
+        count = 0
+        print(config.names)
+        print(config.files)
+
+        # print(self.labels)
+        # print(self.buttons)
         for name in config.names:
-            x+=1
-            i+=name
-            self.label_mode = customtkinter.CTkLabel(master=self.frame_right, text=(name + ":"))
-            self.label_mode.grid(row=x, column=0, pady=0, padx=0, sticky="w")
-            self.button_3 = customtkinter.CTkButton(master=self.frame_right,
+            i=config.files[count]
+            print(config.names)
+            self.label = customtkinter.CTkLabel(master=self.frame_right, text=(name + ":"))
+            self.label.grid(row=x, column=0, pady=0, padx=0, sticky="w")
+            self.button = customtkinter.CTkButton(master=self.frame_right,
                                                 text="Start",
-                                                command=run(i))                                                
-            self.button_3.grid(row=x, column=0, pady=5, padx=0)
+                                                command=lambda i = i:executeCommand(i))                                                
+            self.button.grid(row=x, column=0, pady=5, padx=0)
+
+            x+=1
+            count+=1
+        print(config.names)
+        print(config.files)
           
         # set default values
         self.optionmenu_1.set("Dark")

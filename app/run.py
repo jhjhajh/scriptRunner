@@ -6,10 +6,11 @@ from main import *
 import os
 import config
 
-def run(i):
-    print(i)
+def executeCommand(i):
+    # print(i)
     # sub.run(shlex.split("jupyter-notebook /home/kali/Desktop/testnb.ipynb"))
-    # sub.run(shlex.split(i))
+    sub.run(shlex.split(i))
+    # sub.run(i)
 def userguide():
    webbrowser.open_new("https://github.com/jhjhajh/dso/blob/main/README.md")
 
