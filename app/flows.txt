@@ -1,2 +1,0 @@
-/Users/jiahui/desktop/jiahui/work/internships/now/dso/work/platform/dso/app/main.py
-/Users/jiahui/desktop/jiahui/work/internships/now/dso/work/platform/dso/app/run.sh
