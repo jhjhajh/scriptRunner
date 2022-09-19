@@ -1,17 +1,17 @@
-import subprocess as sub
-import webbrowser
-import shlex
+from tkinter import filedialog
+import config
 import customtkinter
-import tkinter as tk
-from tkinter import filedialog, Text
-import os
 
 def addFlow(entry_name, entry_file):
     filename = filedialog.askopenfilename(initialdir="/", title="Select File", 
     filetypes=(("jupyter notebook", "*.ipynb"), ("all files", "*.*")))
     print(entry_name, entry_file)
 
+# def addFile(window):
 def addFile():
-    select_file = filedialog.askopenfilename(initialdir="/home/kali", title="Select File", 
+    config.select_file = filedialog.askopenfilename(initialdir="/home/kali", title="Select File", 
     filetypes=(("jupyter notebook", "*.ipynb"), ("all files", "*.*")))
-    print(select_file)
+    print(config.select_file)
+    # if config.select_file:
+    #     label_2 = customtkinter.CTkLabel(master=window, text=config.select_file)
+    #     label_2.grid(row=3, column=0, pady=0, padx=20, columnspan = 1, sticky="ne") 

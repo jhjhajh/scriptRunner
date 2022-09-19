@@ -123,14 +123,13 @@ class App(customtkinter.CTk):
         x = 4
         i = ""
         count = 0
-        print(config.names)
-        print(config.files)
-
+        # print(config.names)
+        # print(config.files)
         # print(self.labels)
         # print(self.buttons)
         for name in config.names:
             i=config.files[count]
-            print(config.names)
+            # print(config.names)
             self.label = customtkinter.CTkLabel(master=self.frame_right, text=(name + ":"))
             self.label.grid(row=x, column=0, pady=0, padx=0, sticky="w")
             self.button = customtkinter.CTkButton(master=self.frame_right,
@@ -140,8 +139,8 @@ class App(customtkinter.CTk):
 
             x+=1
             count+=1
-        print(config.names)
-        print(config.files)
+        # print(config.names)
+        # print(config.files)
           
         # set default values
         self.optionmenu_1.set("Dark")

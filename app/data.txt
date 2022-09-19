@@ -1,3 +1,6 @@
 emulation 1,jupyter notebook /Users/jiahui/desktop/jiahui/work/internships/now/dso/work/platform/dso/app/test.ipynb
 emulation 2,ls
 emulation 3,pwd
+test,test
+firjksd,/Users/jiahui/Desktop/jiahui/Work/Internships/now/DSO/work/platform/dso/README.md
+test,jupyter notebook /Users/jiahui/Desktop/jiahui/Work/Internships/now/DSO/work/platform/dso/README.md
