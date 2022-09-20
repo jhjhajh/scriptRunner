@@ -4,3 +4,4 @@ emulation 3,pwd
 test,test
 firjksd,/Users/jiahui/Desktop/jiahui/Work/Internships/now/DSO/work/platform/dso/README.md
 test,jupyter notebook /Users/jiahui/Desktop/jiahui/Work/Internships/now/DSO/work/platform/dso/README.md
+123,jupyter notebook /home/kali/Desktop/testnb.ipynb

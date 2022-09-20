@@ -10,9 +10,6 @@ import config
 
 customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
-# files=[]
-# names=[]
-# temp=[]
 
 class App(customtkinter.CTk):
 
@@ -120,7 +117,7 @@ class App(customtkinter.CTk):
         self.label_info_1.grid(column=0, row=0, sticky="n", padx=10, pady=10)
         # self.label_mode = customtkinter.CTkLabel(master=self.frame_right, text="Emulation 1:")
         # self.label_mode.grid(row=4, column=0, pady=0, padx=0, sticky="w")
-        x = 4
+        x = 3
         i = ""
         count = 0
         # print(config.names)
