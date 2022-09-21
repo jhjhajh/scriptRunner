@@ -11,10 +11,10 @@ def add_emulation():
     window.title("Add Emulation Flow")
     window.grid_columnconfigure(0, weight=1)
     window.grid_columnconfigure(1, weight=2)
-    window.grid_rowconfigure(0, weight=3)
-    window.grid_rowconfigure(0, weight=1)
-    label_1 = customtkinter.CTkLabel(master=window, text="Enter Flow Name:")
-    label_1.grid(row=1, column=0, pady=0, padx=20, columnspan = 1, sticky="ne")  
+    window.grid_rowconfigure((0,1,2,3,4), weight=1)
+    
+    label_name = customtkinter.CTkLabel(master=window, text="Enter Flow Name:")
+    label_name.grid(row=1, column=0, pady=0, padx=20, columnspan = 1, rowspan=4,sticky="ne")  
     entry_name = customtkinter.CTkEntry(master=window,
                                      placeholder_text="Name",
                                      height=30,
@@ -22,17 +22,17 @@ def add_emulation():
                                      border_width=2,
                                      corner_radius=10)
                              
-    entry_name.grid(row=1, column=1, pady=0, padx=20, columnspan = 1, sticky="nw")  
+    entry_name.grid(row=1, column=1, pady=0, padx=20, columnspan = 1, rowspan=4,sticky="nw")  
     
-    label_2 = customtkinter.CTkLabel(master=window, text="Add File for Emulation")
-    label_2.grid(row=2, column=0, pady=0, padx=20, columnspan = 1, sticky="ne")  
+    label_file = customtkinter.CTkLabel(master=window, text="Add File for Emulation")
+    label_file.grid(row=2, column=0, pady=0, padx=20, columnspan = 1, rowspan=4,sticky="ne")  
     add_file_button = customtkinter.CTkButton(master=window,
                                              text="Select File",
                                              border_width=2,  # <- custom border_width
                                              fg_color=None,  # <- no fg_color
                                             command=lambda: (addFile(window))
                                              )
-    add_file_button.grid(row=2, column=1, pady=0, padx=20, columnspan = 1, sticky="nw")
+    add_file_button.grid(row=2, column=1, pady=0, padx=20, columnspan = 1, rowspan=4,sticky="nw")
         
     add_button = customtkinter.CTkButton(master=window,
                                              text="Add",
