@@ -62,12 +62,13 @@ class App(customtkinter.CTk):
                                                 fg_color=None,
                                                 command=add_emulation)
         self.button_AddFlow.grid(row=3, column=0, pady=10, padx=20)
-        self.button_AddFlow = customtkinter.CTkButton(master=self.frame_left,
+        self.button_refresh = customtkinter.CTkButton(master=self.frame_left,
                                                 text="Refresh",
                                                 border_width=2,
-                                                fg_color=None)
+                                                fg_color=None,
+                                                command=lambda:refresh(self.frame_right))
                                                 #command=self.refresh(self.frame_right))
-        self.button_AddFlow.grid(row=4, column=0, pady=10, padx=20)
+        self.button_refresh.grid(row=4, column=0, pady=10, padx=20)
         
         self.button_readme = customtkinter.CTkButton(master=self.frame_left,
                                                 text="User Guide",
@@ -100,53 +101,69 @@ class App(customtkinter.CTk):
                                                    fg_color=("white", "gray38"),  # <- custom tuple-color
                                                    justify=tkinter.CENTER)
         self.label_info_1.grid(column=0, row=0, sticky="n", padx=10, pady=10)
-        x = 1
-        i = ""
-        count = 0
-        for name in config.names:
-            i=config.files[count]
-            self.label = customtkinter.CTkLabel(master=self.frame_right, text=(name + ":"))
-            self.label.grid(row=x, column=0, pady=0, padx=0, sticky="w")
-            self.button = customtkinter.CTkButton(master=self.frame_right,
-                                                text="Start",
-                                                command=lambda i = i:executeCommand(i))                                                
-            self.button.grid(row=x, column=0, pady=5, padx=0)
+        # x = 1
+        # i = ""
+        # count = 0
+        # for name in config.names:
+        #     i=config.files[count]
+        #     self.label = customtkinter.CTkLabel(master=self.frame_right, text=(name + ":"))
+        #     self.label.grid(row=x, column=0, pady=0, padx=0, sticky="w")
+        #     self.button = customtkinter.CTkButton(master=self.frame_right,
+        #                                         text="Start",
+        #                                         command=lambda i = i:executeCommand(i))                                                
+        #     self.button.grid(row=x, column=0, pady=5, padx=0)
 
-            x+=1
-            count+=1
+        #     x+=1
+        #     count+=1
+           
+        refresh(self.frame_right)
         # set default values
         self.optionmenu_1.set("Dark")
+    # def refresh(frame_right):
+    #     x = 1
+    #     i = ""
+    #     count = 0
+    #     for name in config.names:
+    #         i=config.files[count]
+    #         label = customtkinter.CTkLabel(frame_right, text=(name + ":"))
+    #         label.grid(row=x, column=0, pady=0, padx=0, sticky="w")
+    #         button = customtkinter.CTkButton(master=self.frame_right,
+    #                                             text="Start",
+    #                                             command=lambda i = i:executeCommand(i))                                                
+    #         button.grid(row=x, column=0, pady=5, padx=0)
+    #         x+=1
+    #         count+=1
     def on_closing(self, event=0):
         x = len(config.names)
         with open('data.txt', 'w') as f:
             for i in range(x):
                 f.write(config.names[i] + ',' + config.files[i]+'\n')
         self.destroy()
-    def refresh(self, frame_right):
-        self.frame_right.destroy()
-        self.label_info_1 = customtkinter.CTkLabel(master=self.frame_right,
-                                                   text="Adversary Emulation\n",
-                                                   height=100,
-                                                   width = self.frame_right.winfo_screenwidth()/2,
-                                                   text_font = ("Roboto Medium", 14),
-                                                   corner_radius=6,  # <- custom corner radius
-                                                   fg_color=("white", "gray38"),  # <- custom tuple-color
-                                                   justify=tkinter.CENTER)
-        self.label_info_1.grid(column=0, row=0, sticky="n", padx=10, pady=10)
-        x = 3
-        i = ""
-        count = 0
-        for name in config.names:
-            i=config.files[count]
-            self.label = customtkinter.CTkLabel(master=self.frame_right, text=(name + ":"))
-            self.label.grid(row=x, column=0, pady=0, padx=0, sticky="w")
-            self.button = customtkinter.CTkButton(master=self.frame_right,
-                                                text="Start",
-                                                command=lambda i = i:executeCommand(i))                                                
-            self.button.grid(row=x, column=0, pady=5, padx=0)
+    # def refresh(self, frame_right):
+    #     self.frame_right.destroy()
+    #     self.label_info_1 = customtkinter.CTkLabel(master=self.frame_right,
+    #                                                text="Adversary Emulation\n",
+    #                                                height=100,
+    #                                                width = self.frame_right.winfo_screenwidth()/2,
+    #                                                text_font = ("Roboto Medium", 14),
+    #                                                corner_radius=6,  # <- custom corner radius
+    #                                                fg_color=("white", "gray38"),  # <- custom tuple-color
+    #                                                justify=tkinter.CENTER)
+    #     self.label_info_1.grid(column=0, row=0, sticky="n", padx=10, pady=10)
+    #     x = 3
+    #     i = ""
+    #     count = 0
+    #     for name in config.names:
+    #         i=config.files[count]
+    #         self.label = customtkinter.CTkLabel(master=self.frame_right, text=(name + ":"))
+    #         self.label.grid(row=x, column=0, pady=0, padx=0, sticky="w")
+    #         self.button = customtkinter.CTkButton(master=self.frame_right,
+    #                                             text="Start",
+    #                                             command=lambda i = i:executeCommand(i))                                                
+    #         self.button.grid(row=x, column=0, pady=5, padx=0)
 
-            x+=1
-            count+=1
+    #         x+=1
+    #         count+=1
 
 if __name__ == "__main__":
     app = App()

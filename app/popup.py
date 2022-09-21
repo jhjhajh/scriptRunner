@@ -11,7 +11,8 @@ def add_emulation():
     window.title("Add Emulation Flow")
     window.grid_columnconfigure(0, weight=1)
     window.grid_columnconfigure(1, weight=2)
-    window.grid_rowconfigure((0,1,2,3,4), weight=1)
+    window.grid_rowconfigure((0,1,4,5), weight=1)
+    window.grid_rowconfigure((1,2), weight=2)
     
     label_name = customtkinter.CTkLabel(master=window, text="Enter Flow Name:")
     label_name.grid(row=1, column=0, pady=0, padx=20, columnspan = 1, rowspan=4,sticky="ne")  
@@ -32,25 +33,18 @@ def add_emulation():
                                              fg_color=None,  # <- no fg_color
                                             command=lambda: (addFile(window))
                                              )
-    add_file_button.grid(row=2, column=1, pady=0, padx=20, columnspan = 1, rowspan=4,sticky="nw")
-        
+    add_file_button.grid(row=2, column=1, pady=0, padx=20, columnspan = 1, rowspan=4,sticky="nw") 
     add_button = customtkinter.CTkButton(master=window,
                                              text="Add",
                                              border_width=2,  # <- custom border_width
                                              fg_color=None,  # <- no fg_color
-                                             command=lambda:appendList(entry_name.get())
+                                             command=lambda:addFlow(frame_right, entry_name.get())
                                              )
-    add_button.grid(row=4, column=1, columnspan=2, pady=20, padx=20, sticky="se")
+    add_button.grid(row=5, column=1, columnspan=2, pady=20, padx=20, sticky="se")
     done_button = customtkinter.CTkButton(master=window,
                                              text="Done",
                                              border_width=2,  # <- custom border_width
                                              fg_color=("white", "gray38"),  # <- no fg_color
                                              command=window.destroy
                                              )
-    done_button.grid(row=4, column=0, columnspan=2, pady=20, padx=20, sticky="sw")
-
-def appendList(entry_name):
-    config.names += [entry_name]
-    config.files += ["jupyter notebook " + config.select_file] # only for jupyter notebooks
-    print(config.names)
-    print(config.files)
+    done_button.grid(row=5, column=0, columnspan=2, pady=20, padx=20, sticky="sw")

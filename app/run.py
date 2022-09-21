@@ -31,3 +31,17 @@ def start():
                     temp=temp.split(',')
                     config.names += [temp[0]]
                     config.files += [temp[1]]
+def refresh(frame_right):
+    x = 1
+    i = ""
+    count = 0
+    for name in config.names:
+        i=config.files[count]
+        label = customtkinter.CTkLabel(frame_right, text=(name + ":"))
+        label.grid(row=x, column=0, pady=0, padx=0, sticky="w")
+        button = customtkinter.CTkButton(master=frame_right,
+                                            text="Start",
+                                            command=lambda i = i:executeCommand(i))                                                
+        button.grid(row=x, column=0, pady=5, padx=0)
+        x+=1
+        count+=1
