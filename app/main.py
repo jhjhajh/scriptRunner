@@ -114,21 +114,6 @@ class App(customtkinter.CTk):
 
             x+=1
             count+=1
-        self.radio_var = tkinter.IntVar(value=0)
-        self.label_radio_group = customtkinter.CTkLabel(master=self.frame_right,
-                                                        text="Add Emulation:", 
-                                                        text_font=("Roboto Medium", -16))
-        self.label_radio_group.grid(row=0, column=2, columnspan=1, pady=20, padx=10, sticky="")
-
-        self.radio_button_1 = customtkinter.CTkRadioButton(master=self.frame_right,
-                                                           variable=self.radio_var,
-                                                           value=0)
-        self.radio_button_1.grid(row=1, column=2, pady=10, padx=20, sticky="n")
-
-        self.radio_button_2 = customtkinter.CTkRadioButton(master=self.frame_right,
-                                                           variable=self.radio_var,
-                                                           value=1)
-        self.radio_button_2.grid(row=2, column=2, pady=10, padx=20, sticky="n")
         # set default values
         self.optionmenu_1.set("Dark")
     def on_closing(self, event=0):
