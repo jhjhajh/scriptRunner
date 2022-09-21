@@ -29,7 +29,7 @@ def add_emulation():
                                              text="Select File",
                                              border_width=2,  # <- custom border_width
                                              fg_color=None,  # <- no fg_color
-                                            command=addFile(window)
+                                            command=lambda: (addFile(window))
                                             #command=addFile
                                              )
     add_file_button.grid(row=2, column=1, pady=0, padx=20, columnspan = 1, sticky="nw")
