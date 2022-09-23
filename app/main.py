@@ -35,7 +35,7 @@ class App(customtkinter.CTk):
                                                  corner_radius=0)
         self.frame_left.grid(row=0, column=0, sticky="nswe")
 
-        self.frame_right = customtkinter.CTkFrame(master=self)
+        self.frame_right = customtkinter.CTkFrame(master=self, highlightthickness=0)
         self.frame_right.grid(row=0, column=1, sticky="nswe", padx=20, pady=20)
 
         # ============ frame_left ============
@@ -66,7 +66,8 @@ class App(customtkinter.CTk):
                                                 text="Refresh",
                                                 border_width=2,
                                                 fg_color=None,
-                                                command=lambda:refresh(self.frame_right))
+                                                command=lambda:(refresh(self.frame_right)))
+                                                #command=self.refresh(self.frame_right))
                                                 #command=self.refresh(self.frame_right))
         self.button_refresh.grid(row=4, column=0, pady=10, padx=20)
         
@@ -82,42 +83,14 @@ class App(customtkinter.CTk):
                                                         values=["Light", "Dark", "System"],
                                                         command=change_appearance_mode)
         self.optionmenu_1.grid(row=10, column=0, pady=10, padx=20, sticky="w")
-
-        # ============ frame_right ============
+            #     # ============ frame_right ============
 
         # configure grid layout (3x7)
         self.frame_right.rowconfigure((0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10), weight=1)
         self.frame_right.columnconfigure((0, 1), weight=1)
         self.frame_right.columnconfigure(2, weight=0)
-
-
-        # ============ frame_info ============
-        self.label_info_1 = customtkinter.CTkLabel(master=self.frame_right,
-                                                   text="Adversary Emulation\n",
-                                                   height=90,
-                                                   width = self.frame_right.winfo_screenwidth()/3*2,
-                                                   text_font = ("Roboto Medium", 14),
-                                                   corner_radius=6,  # <- custom corner radius
-                                                   fg_color=("white", "gray38"),  # <- custom tuple-color
-                                                   justify=tkinter.CENTER)
-        self.label_info_1.grid(column=0, row=0, sticky="n", padx=10, pady=10)
-        # x = 1
-        # i = ""
-        # count = 0
-        # for name in config.names:
-        #     i=config.files[count]
-        #     self.label = customtkinter.CTkLabel(master=self.frame_right, text=(name + ":"))
-        #     self.label.grid(row=x, column=0, pady=0, padx=0, sticky="w")
-        #     self.button = customtkinter.CTkButton(master=self.frame_right,
-        #                                         text="Start",
-        #                                         command=lambda i = i:executeCommand(i))                                                
-        #     self.button.grid(row=x, column=0, pady=5, padx=0)
-
-        #     x+=1
-        #     count+=1
-           
-        refresh(self.frame_right)
-        # set default values
+        write_frame_right(self.frame_right)
+# put the chunk here
         self.optionmenu_1.set("Dark")
     # def refresh(frame_right):
     #     x = 1
@@ -133,11 +106,49 @@ class App(customtkinter.CTk):
     #         button.grid(row=x, column=0, pady=5, padx=0)
     #         x+=1
     #         count+=1
+    # def refresh(frame_right):
+    #     # for widget in frame_right.winfo_children():
+    #     #     widget.destroy()
+    #     frame_right.destroy()
+    #     write_frame_right(self.frame_right)
+        
+    # def write_frame_right(self):
+    #     print("test")
+    #     # ============ frame_right ============
+
+    #     # configure grid layout (3x7)
+    #     self.frame_right.rowconfigure((0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10), weight=1)
+    #     self.frame_right.columnconfigure((0, 1), weight=1)
+    #     self.frame_right.columnconfigure(2, weight=0)
+
+
+    #     # ============ frame_info ============
+    #     self.label_info_1 = customtkinter.CTkLabel(master=self.frame_right,
+    #                                                text="Adversary Emulation\n",
+    #                                                height=90,
+    #                                                width = self.frame_right.winfo_screenwidth()/3*2,
+    #                                                text_font = ("Roboto Medium", 14),
+    #                                                corner_radius=6,  # <- custom corner radius
+    #                                                fg_color=("white", "gray38"),  # <- custom tuple-color
+    #                                                justify=tkinter.CENTER)
+    #     self.label_info_1.grid(column=0, row=0, sticky="n", padx=10, pady=10)
+    #     x = 1
+    #     i = ""
+    #     count = 0
+    #     for name in config.names:
+    #         i=config.files[count]
+    #         self.label = customtkinter.CTkLabel(master=self.frame_right, text=(name + ":"))
+    #         self.label.grid(row=x, column=0, pady=0, padx=0, sticky="w")
+    #         self.button = customtkinter.CTkButton(master=self.frame_right,
+    #                                             text="Start",
+    #                                             command=lambda i = i:executeCommand(i))                                                
+    #         self.button.grid(row=x, column=0, pady=5, padx=0)
+
+    #         x+=1
+    #         count+=1
+
     def on_closing(self, event=0):
-        x = len(config.names)
-        with open('data.txt', 'w') as f:
-            for i in range(x):
-                f.write(config.names[i] + ',' + config.files[i]+'\n')
+        save_file()
         self.destroy()
     # def refresh(self, frame_right):
     #     self.frame_right.destroy()

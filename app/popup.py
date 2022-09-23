@@ -3,6 +3,7 @@ from add import *
 import config
 from tkinter import * 
 import os
+from run import *
 
 def add_emulation():
 
@@ -38,7 +39,7 @@ def add_emulation():
                                              text="Add",
                                              border_width=2,  # <- custom border_width
                                              fg_color=None,  # <- no fg_color
-                                             command=lambda:addFlow(frame_right, entry_name.get())
+                                             command=lambda:appendList(entry_name.get())
                                              )
     add_button.grid(row=5, column=1, columnspan=2, pady=20, padx=20, sticky="se")
     done_button = customtkinter.CTkButton(master=window,

@@ -2,3 +2,6 @@ emulation 1,jupyter notebook /home/kali/Desktop/testnb.ipynb
 emulation 2,ls
 emulation 3,pwd
 test,parallel -u ::: '/home/kali/Desktop/local1.sh 1' '/home/kali/Desktop/local2.sh 2'
+fdc,python3 /home/kali/Desktop/app.py
+gfc,jupyter notebook /home/kali/Desktop/dso/scripts/Untitled.ipynb
+gtrf,/home/kali/Desktop/dso/README.md
