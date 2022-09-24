@@ -1,4 +1,1 @@
-erorr handling:
-- file read and write -- > done
-- reject empty inputs for names and files
-- if starting to run doesn't work, show the error message on terminal or popup and stop the running by force
+

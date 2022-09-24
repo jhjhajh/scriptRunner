@@ -1,0 +1,8 @@
+error handling:
+- cannot have commas in the name entry
+- if file path invalid
+
+
+logging. not sure why logging aint happening
+
+update readme 
