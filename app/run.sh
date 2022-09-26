@@ -1,2 +1,3 @@
 #!/bin/sh
-python3 main.py | tee log.txt
+exec > /output.txt 2>&1
+python3 main.py
