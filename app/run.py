@@ -7,7 +7,10 @@ import os
 import config
 
 def executeCommand(i):
-    sub.run(shlex.split(i))
+    try:
+        sub.run(shlex.split(i))
+    except:
+        print("Check that you have permissions to run the file, the file is in the correct path and it is an executable.")
 
 def userguide():
    webbrowser.open_new("https://github.com/jhjhajh/dso/blob/main/README.md")

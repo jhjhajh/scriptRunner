@@ -11,18 +11,45 @@ def addFile(window):
     if config.select_file:
         label_2 = customtkinter.CTkLabel(master=window, text=config.select_file)
         label_2.grid(row=3, column=1, pady=0, padx=20, columnspan = 1, sticky="nw")
-        
+
 def appendList(entry_name):
-    config.names += [entry_name]
-    if (isJupyter()):
-        config.files += ["jupyter notebook " + config.select_file] # only for jupyter notebooks
-    elif (isPython()):
-        config.files += ["python3 " + config.select_file]
+    if entry_name == "":
+        print("Please input flow name")
+        errorwindow=customtkinter.CTkToplevel()
+        errorwindow.geometry("200x100")
+        errorwindow.title("Error")
+        error_message = customtkinter.CTkLabel(master=errorwindow, text="Please input flow name")
+        error_message.grid(row=0, column=0, pady=30, sticky="ew", padx=20)  
+        errorwindow.after(3000, lambda: errorwindow.destroy())
+    elif config.select_file == "":
+        print("Please select a file")
+        errorwindow=customtkinter.CTkToplevel()
+        errorwindow.geometry("280x100")
+        errorwindow.title("Error")
+        error_message = customtkinter.CTkLabel(master=errorwindow, text="\n\tPlease select a file")
+        error_message.grid(row=0, column=0, pady=0, sticky="ew", padx="20")  
+        errorwindow.after(3000, lambda: errorwindow.destroy())
+    elif "," in entry_name:
+        print("please try again")
+        errorwindow=customtkinter.CTkToplevel()
+        errorwindow.geometry("280x10")
+        errorwindow.title("Error")
+        error_message = customtkinter.CTkLabel(master=errorwindow, text="\nPlease only use alphanumeric characters and" + "\n" +" spaces in emulation name")
+        error_message.grid(row=0, column=0, pady=0,  sticky="ew")  
+        errorwindow.after(3000, lambda: errorwindow.destroy())
+
     else:
-        config.files += [config.select_file]
-    print(config.names)
-    print(config.files)
-    save_file()
+        config.names += [entry_name]
+        if (isJupyter()):
+            config.files += ["jupyter notebook " + config.select_file] # only for jupyter notebooks
+        elif (isPython()):
+            config.files += ["python3 " + config.select_file]
+        else:
+            config.files += [config.select_file]
+        print(config.names)
+        print(config.files)
+        save_file()
+    config.select = ""
 
 
 def isJupyter():
