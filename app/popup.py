@@ -6,7 +6,7 @@ import os
 from run import *
 
 def add_emulation():
-
+    config.select = ""
     window = customtkinter.CTkToplevel()
     window.geometry("600x300")
     window.title("Add Emulation Flow")

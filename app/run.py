@@ -1,16 +1,18 @@
-import subprocess as sub
+from subprocess import call
 import webbrowser
 import shlex
 import customtkinter
 from main import *
 import os
 import config
+import threading
 
 def executeCommand(i):
-    try:
-        sub.run(shlex.split(i))
-    except:
-        print("Check that you have permissions to run the file, the file is in the correct path and it is an executable.")
+    # try:
+        # sub.run(shlex.split(i))
+    threading.Thread(target=call, args=(shlex.split(i) ,), ).start()
+    # except:
+    #     print("Check that you have permissions to run the file, the file is in the correct path and it is an executable.")
 
 def userguide():
    webbrowser.open_new("https://github.com/jhjhajh/dso/blob/main/README.md")
@@ -23,18 +25,19 @@ def change_appearance_mode(new_appearance_mode):
     customtkinter.set_appearance_mode(new_appearance_mode)
 
 def start():
-    config.names=[]
-    config.files=[]
-    if os.path.isfile('data.txt'):
-        with open('data.txt', 'r') as f:
-            tempFiles = f.read()
-            tempFiles = tempFiles.splitlines()
-            # tempFiles=[x for x in tempFiles if x.strip()]
-            # print(tempFiles)
-            for temp in tempFiles:
-                temp=temp.split(',')
-                config.names += [temp[0]]
-                config.files += [temp[1]]
+    try:
+        config.names=[]
+        config.files=[]
+        if os.path.isfile('data.txt'):
+            with open('data.txt', 'r') as f:
+                tempFiles = f.read()
+                tempFiles = tempFiles.splitlines()
+                for temp in tempFiles:
+                    temp=temp.split(',')
+                    config.names += [temp[0]]
+                    config.files += [temp[1]]
+    except:
+        print("unable to read file. check the format of data file")
 
 def write_frame_right(frame_right):
     label_info_1 = customtkinter.CTkLabel(master=frame_right,
