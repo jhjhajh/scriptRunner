@@ -8,11 +8,11 @@ import config
 import threading
 
 def executeCommand(i):
-    # try:
+    try :
         # sub.run(shlex.split(i))
-    threading.Thread(target=call, args=(shlex.split(i) ,), ).start()
-    # except:
-    #     print("Check that you have permissions to run the file, the file is in the correct path and it is an executable.")
+        threading.Thread(target=call, args=(shlex.split(i) ,), ).start()
+    except:
+        print("Check that you have permissions to run the file, the file is in the correct path and it is an executable.")
 
 def userguide():
    webbrowser.open_new("https://github.com/jhjhajh/dso/blob/main/README.md")
