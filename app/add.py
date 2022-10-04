@@ -29,7 +29,7 @@ def appendList(entry_name):
         error_message = customtkinter.CTkLabel(master=errorwindow, text="\n\tPlease select a file")
         error_message.grid(row=0, column=0, pady=0, sticky="ew", padx="20")  
         errorwindow.after(2000, lambda: errorwindow.destroy())
-    elif "," in entry_name:
+    elif not entry_name.isalnum():
         # print("please try again")
         # errorwindow=customtkinter.CTkToplevel()
         # errorwindow.geometry("280x10")
@@ -37,11 +37,11 @@ def appendList(entry_name):
         # error_message = customtkinter.CTkLabel(master=errorwindow, text="\nPlease only use alphanumeric characters and" + "\n" +" spaces in emulation name")
         # error_message.grid(row=0, column=0, pady=0,  sticky="ew")  
         # errorwindow.after(3000, lambda: errorwindow.destroy())
-        print("Please only use alphanumeric characters and spaces in emulation name")
+        print("Please use alphanumeric characters without spaces in emulation name")
         errorwindow=customtkinter.CTkToplevel()
         errorwindow.geometry("300x100")
         errorwindow.title("Error")
-        error_message = customtkinter.CTkLabel(master=errorwindow, text="\nPlease only use alphanumeric characters and" + "\n" +" spaces in emulation name")
+        error_message = customtkinter.CTkLabel(master=errorwindow, text="\nPlease use alphanumeric characters without" + "\n" +" spaces in emulation name")
         error_message.grid(row=0, column=0, pady=0, sticky="ew", padx="20")  
         errorwindow.after(2000, lambda: errorwindow.destroy())
 

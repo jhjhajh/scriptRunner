@@ -6,14 +6,18 @@ from main import *
 import os
 import config
 import threading
+from datetime import datetime
 
-def executeCommand(i):
+def executeCommand(i, count):
     try :
+        configCommand = shlex.split("python3 generateConfig.py")
         # sub.run(shlex.split(i))
         threading.Thread(target=call, args=(shlex.split(i) ,), ).start()
+        threading.Thread(target=call, args=(shlex.split(configCommand) ,), ).start()
+  
     except:
         print("Check that you have permissions to run the file, the file is in the correct path and it is an executable.")
-
+# def create a popup window with single entry 
 def userguide():
    webbrowser.open_new("https://github.com/jhjhajh/dso/blob/main/README.md")
 
@@ -54,11 +58,12 @@ def write_frame_right(frame_right):
     count = 0
     for name in config.names:
         i=config.files[count]
+        config.index_name=config.names[count]
         label = customtkinter.CTkLabel(master=frame_right, text=(name + ":"))
         label.grid(row=x, column=0, pady=0, padx=0, sticky="w")
         button = customtkinter.CTkButton(master=frame_right,
                                                 text="Start",
-                                                command=lambda i = i:executeCommand(i))                                                
+                                                command=lambda i = i:executeCommand(i, count))                                                
         button.grid(row=x, column=0, pady=5, padx=0)
         x+=1
         count+=1
