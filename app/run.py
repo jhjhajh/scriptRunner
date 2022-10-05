@@ -10,10 +10,10 @@ from datetime import datetime
 # add a configur button at the bottom right corner
 def executeCommand(i, count):
     try :
-        configCommand = shlex.split("python3 generateConfig.py")
+        # configCommand = shlex.split("python3 generateConfig.py")
         # sub.run(shlex.split(i))
         threading.Thread(target=call, args=(shlex.split(i) ,), ).start()
-        threading.Thread(target=call, args=(shlex.split(configCommand) ,), ).start()
+        threading.Thread(target=call, args=(shlex.split("python3 generateConfig.py") ,), ).start()
   
     except:
         print("Check that you have permissions to run the file, the file is in the correct path and it is an executable.")
