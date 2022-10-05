@@ -2,7 +2,7 @@ from tkinter import filedialog
 import config
 import customtkinter
 from run import *
-    
+import ipaddress
 
 def addFile(window):
     config.select_file = filedialog.askopenfilename(initialdir="/home/kali/Desktop/DSO/app", title="Select File", 
@@ -11,6 +11,23 @@ def addFile(window):
     if config.select_file:
         label_2 = customtkinter.CTkLabel(master=window, text=config.select_file)
         label_2.grid(row=3, column=1, pady=0, padx=20, columnspan = 1, sticky="nw")
+        
+def configure(name, ip, path):
+    # enure inputs are valid, config wont change unless valid
+    if ((name.strip() != "") or (name.strip().isalnum())):
+        config.index_name = name.strip()
+    if (ip.strip() != ""):
+        try:
+            ip = ipaddress.ip_address(ip.strip())
+            config.ip_addr = ip
+        except:
+            config.ip_addr = config.ip_addr
+    if (path.strip() != ""):
+        config.path = path
+    print(config.index_name)
+    print(config.ip_addr)
+    print(config.path)
+    
 
 def appendList(entry_name):
     if entry_name == "":

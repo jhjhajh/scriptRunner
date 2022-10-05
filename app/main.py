@@ -73,7 +73,7 @@ class App(customtkinter.CTk):
                                             text="Configure",
                                             border_width=2,
                                             fg_color=None,
-                                            command=lambda:(refresh(self.frame_right))) #pop up to ask for entries for configuration
+                                            command=lambda:(configure_window())) #pop up to ask for entries for configuration
 
         self.button_configure.grid(row=5, column=0, pady=10, padx=20)
         
@@ -99,6 +99,7 @@ class App(customtkinter.CTk):
         
     def on_closing(self, event=0):
         save_file()
+        # self.save_config()
         self.destroy()
 
 if __name__ == "__main__":
