@@ -42,7 +42,7 @@ class App(customtkinter.CTk):
 
         # configure grid layout (1x11)
         self.frame_left.grid_rowconfigure(0, minsize=10)   # empty row with minsize as spacing
-        self.frame_left.grid_rowconfigure(5, weight=1)  # empty row as spacing
+        self.frame_left.grid_rowconfigure(6, weight=1)  # empty row as spacing
         self.frame_left.grid_rowconfigure(8, minsize=20)    # empty row with minsize as spacing
         self.frame_left.grid_rowconfigure(11, minsize=10)  # empty row with minsize as spacing
 
@@ -69,6 +69,13 @@ class App(customtkinter.CTk):
                                                 command=lambda:(refresh(self.frame_right)))
 
         self.button_refresh.grid(row=4, column=0, pady=10, padx=20)
+        self.button_configure = customtkinter.CTkButton(master=self.frame_left,
+                                            text="Configure",
+                                            border_width=2,
+                                            fg_color=None,
+                                            command=lambda:(refresh(self.frame_right))) #pop up to ask for entries for configuration
+
+        self.button_configure.grid(row=5, column=0, pady=10, padx=20)
         
         self.button_readme = customtkinter.CTkButton(master=self.frame_left,
                                                 text="User Guide",

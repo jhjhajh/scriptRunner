@@ -7,7 +7,7 @@ import os
 import config
 import threading
 from datetime import datetime
-
+# add a configur button at the bottom right corner
 def executeCommand(i, count):
     try :
         configCommand = shlex.split("python3 generateConfig.py")
