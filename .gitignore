@@ -1,7 +1,6 @@
-/app/__pycache__/
+/app/__pycache__/*
 /app/.ipynb_checkpoints
 /node_modules
-/app/run.py
 # .env
 
 # Logs
