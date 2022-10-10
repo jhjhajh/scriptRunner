@@ -1,0 +1,6 @@
+emulation 1,jupyter notebook /home/kali/Desktop/DSO/app/scripts/testnb.ipynb
+test,parallel -u ::: '/home/kali/Desktop/local1.sh 1' '/home/kali/Desktop/local2.sh 2'
+works,jupyter notebook /home/kali/Desktop/dso/app/test.ipynb
+doesnt work,/home/kali/Desktop/dso/app/README.md
+test2,jupyter notebook /home/kali/Desktop/dso/app/test.ipynb
+123,jupyter notebook /home/kali/Desktop/dso/app/test.ipynb
