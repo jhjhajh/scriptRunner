@@ -1,3 +1,5 @@
+/app/__pycache__
+/app/.ipynb_checkpoints
 /node_modules
 # .env
 
