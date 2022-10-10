@@ -1,3 +1,6 @@
+123
+127.0.0.1
+C:\\Programm\\Files\\WinLogBeat
 emulation 1,jupyter notebook /home/kali/Desktop/DSO/app/scripts/testnb.ipynb
 test,parallel -u ::: '/home/kali/Desktop/local1.sh 1' '/home/kali/Desktop/local2.sh 2'
 works,jupyter notebook /home/kali/Desktop/dso/app/test.ipynb

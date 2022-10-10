@@ -1,6 +1,9 @@
 files=[]
 names=[]
 select_file =""
-index_name = "winlogbeat-automation-test"
-ip_addr = "192.168.122.192"
+# index_name = "winlogbeat-automation-test"
+index_name = ""
+# ip_addr = "192.168.122.192"
+ip_addr = ""
+# path = "C:\\Programm\\Files\\WinLogBeat"
 path = "C:\\Programm\\Files\\WinLogBeat"

@@ -99,6 +99,9 @@ def save_file():
     try:
         x = len(config.names)
         with open('data.txt', 'w') as f:
+            f.write(config.index_name + '\n')
+            f.write(config.ip_addr + '\n')
+            f.write(config.path + '\n')
             for i in range(x):
                 f.write(config.names[i] + ',' + config.files[i]+'\n')
     except:
