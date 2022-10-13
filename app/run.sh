@@ -1,3 +1,3 @@
-#!/bin/sh
-exec > /output.txt 2>&1
+#!/bin/bash
+
 python3 main.py

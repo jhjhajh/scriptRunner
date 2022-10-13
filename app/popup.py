@@ -62,7 +62,7 @@ def configure_window():
     label_name = customtkinter.CTkLabel(master=window, text="Index Name:")
     label_name.grid(row=1, column=0, pady=0, padx=20, columnspan = 1, rowspan=4,sticky="ne")  
     input_name = customtkinter.CTkEntry(master=window,
-                                     placeholder_text="Index Name",
+                                     placeholder_text=config.index_name,
                                      height=30,
                                      width = 200,
                                      border_width=2,
@@ -72,7 +72,7 @@ def configure_window():
     label_ip = customtkinter.CTkLabel(master=window, text="IP Address:")
     label_ip.grid(row=2, column=0, pady=0, padx=20, columnspan = 1, rowspan=4,sticky="ne")  
     ip = customtkinter.CTkEntry(master=window,
-                                     placeholder_text="127.0.0.1",
+                                     placeholder_text=config.ip_addr,
                                      height=30,
                                      width = 200,
                                      border_width=2,
@@ -82,7 +82,7 @@ def configure_window():
     label_path = customtkinter.CTkLabel(master=window, text="Path: ")
     label_path.grid(row=3, column=0, pady=0, padx=20, columnspan = 1, rowspan=4,sticky="ne")  
     path = customtkinter.CTkEntry(master=window,
-                                     placeholder_text="C:\\Program\\Files\\WinLogBeat",
+                                     placeholder_text=config.path,
                                      height=30,
                                      width = 200,
                                      border_width=2,
