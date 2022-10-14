@@ -10,10 +10,6 @@ from datetime import datetime
 
 def executeCommand(i):
     try :
-    # config.index_name = config.names[count]
-    # print(config.index_name)
-        # configCommand = shlex.split("python3 generateConfig.py")
-        # sub.run(shlex.split(i))
         threading.Thread(target=call, args=(shlex.split(i) ,), ).start()
         threading.Thread(target=call, args=(shlex.split("python3 generateConfig.py") ,), ).start()
   
@@ -23,13 +19,13 @@ def executeCommand(i):
 
 def startInstances():
     try:
-        threading.Thread(target=call, args=(shlex.split("./start.sh") ,), ).start()
+        threading.Thread(target=call, args=(shlex.split("./start_instances.sh") ,), ).start()
     except Exception as e:
         print("Error starting instances. Rectify errors and try again.")
         print(e.msg)
 # def create a popup window with single entry 
 def userguide():
-   webbrowser.open_new("https://github.com/jhjhajh/dso/blob/main/README.md")
+   webbrowser.open_new("https://github.com/jhjhajh/dso/blob/pyver/README.md")
 
 # for testing if button works
 def button_event():
@@ -55,7 +51,6 @@ def start():
                 print(config.ip_addr)
                 config.path = tempFiles[2]
                 print(config.path)
-                # for temp in tempFiles:
                 x = 3
                 while x < len(tempFiles):
                     tempFiles[x]=tempFiles[x].split(',')
