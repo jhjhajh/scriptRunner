@@ -11,7 +11,7 @@ from datetime import datetime
 def executeCommand(i):
     try :
         threading.Thread(target=call, args=(shlex.split(i) ,), ).start()
-        threading.Thread(target=call, args=(shlex.split("python3 generateConfig.py") ,), ).start()
+        threading.Thread(target=call, args=(shlex.split("python3 app/generateConfig.py") ,), ).start()
   
     except Exception as e:
         print("Check that you have permissions to run the file, the file is in the correct path and it is an executable.")
@@ -83,7 +83,7 @@ def write_frame_right(frame_right):
         label.grid(row=x, column=0, pady=0, padx=0, sticky="w")
         button = customtkinter.CTkButton(master=frame_right,
                                                 text="Start",
-                                                command=lambda i = i:executeCommand(i, count))                                                
+                                                command=lambda i = i:executeCommand(i))                                                
         button.grid(row=x, column=0, pady=5, padx=0)
         x+=1
         count+=1
