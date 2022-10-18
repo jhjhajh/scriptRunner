@@ -6,7 +6,7 @@ def set_index_name():
   s = datetime.now().strftime()
   dt_str = ''.join(c for c in s if c.isalnum())
   ip_addr = config.ip_addr
-  name_of_index = config.index_name + dt_str
+  name_of_index = "winlogbeat-" + config.index_name + dt_str
   path = config.path
   
   winlogbeat = f'''
