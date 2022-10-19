@@ -1,17 +1,4 @@
-import config
-from datetime import datetime
-import threading
 
-def set_index_name():
-  # emulation name and datetime appended to winlogbeat to create unique index
-  s = datetime.now().strftime("%Y%m%d%H%M")
-  dt_str = ''.join(c for c in s if c.isalnum())
-  ip_addr = config.ip_addr
-  name_of_index = "winlogbeat-" + config.index_name + dt_str
-  path = config.path
-
-  
-  winlogbeat = f'''
   ###################### Winlogbeat Configuration Example ########################
 
   # This file is an example configuration file highlighting only the most common
@@ -58,8 +45,8 @@ def set_index_name():
     #index.codec: best_compression
     #_source.enabled: false
 
-  setup.template.name: "winlogbeat-%{{[agent.version]}}"
-  setup.template.pattern: "winlogbeat-%{{[agent.version]}}"
+  setup.template.name: "winlogbeat-%{[agent.version]}"
+  setup.template.pattern: "winlogbeat-%{[agent.version]}"
 
   # ================================== General ===================================
 
@@ -98,7 +85,7 @@ def set_index_name():
     # Scheme and port can be left out and will be set to the default (http and 5601)
     # In case you specify and additional path, the scheme is required: http://localhost:5601/path
     # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601
-    host: "{ip_addr}:5601"
+    host: ":5601"
 
     # Kibana Space ID
     # ID of the Kibana Space into which the dashboards should be loaded. By default,
@@ -125,9 +112,9 @@ def set_index_name():
   # ---------------------------- Elasticsearch Output ----------------------------
   output.elasticsearch:
     # Array of hosts to connect to.
-    hosts: ["{ip_addr}:9200"]
+    hosts: [":9200"]
     allow_older_versions: "true"
-    index: "{name_of_index}"
+    index: "winlogbeat-202210191816"
 
     # Protocol - either `http` (default) or `https`.
     #protocol: "https"
@@ -217,10 +204,4 @@ def set_index_name():
 
   # This allows to enable 6.7 migration aliases
   #migration.6_to_7.enabled: true
-  '''
-
-  output_file = open(path + '/winlogbeat.yml', 'w')
-  output_file.write(winlogbeat)
-  output_file.close()
-                                                                                      
-set_index_name()
+  

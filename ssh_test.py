@@ -19,6 +19,9 @@ def run_command(ssh, command):
 	return lines
 	
 ssh = init_connection()
+start_winlogbeat = run_command(ssh, start_beat)
+auto_winlogbeat = run_command(ssh, auto_beat)
 lines = run_command(ssh, "powershell.exe -ExecutionPolicy bypass .\\webreq.ps1")
+stop_winlogbeat = run_command(ssh, stop_beat)
 
-print(lines)
+print("done")

@@ -7,12 +7,14 @@ import os
 import config
 import threading
 from datetime import datetime
+import time
 
 def executeCommand(i):
     try :
+        # threading.Thread(target=call, args=(shlex.split("python3 app/winlogbeat_yml_files/generateConfig.py") ,), ).start()
+        # time.sleep(3)
         threading.Thread(target=call, args=(shlex.split(i) ,), ).start()
-        threading.Thread(target=call, args=(shlex.split("python3 app/generateConfig.py") ,), ).start()
-  
+        
     except Exception as e:
         print("Check that you have permissions to run the file, the file is in the correct path and it is an executable.")
         print(e.msg)
@@ -23,7 +25,15 @@ def startInstances():
     except Exception as e:
         print("Error starting instances. Rectify errors and try again.")
         print(e.msg)
-# def create a popup window with single entry 
+        
+def generate_winlogbeat():
+    try:
+        threading.Thread(target=call, args=(shlex.split("python3 app/generateConfig.py") ,), ).start()
+        print("winlogbeat yml file generated in specified path. Transfer it to victim machines before starting simulation")
+    except Exception as e:
+        print("Error generating winlogbeat yml file. Rectify errors and try again.")
+        print(e.msg)
+        
 def userguide():
    webbrowser.open_new("https://github.com/jhjhajh/dso/blob/pyver/README.md")
 
@@ -87,6 +97,11 @@ def write_frame_right(frame_right):
         button.grid(row=x, column=0, pady=5, padx=0)
         x+=1
         count+=1
+
+    generate_index = customtkinter.CTkButton(master=frame_right,
+                                                text="Generate",
+                                                command=lambda : generate_winlogbeat())                                                
+    generate_index.grid(row=9, column=2, pady=5, padx=10)
     start_instances = customtkinter.CTkButton(master=frame_right,
                                                 text="Start Instances",
                                                 command=lambda : startInstances())                                                
