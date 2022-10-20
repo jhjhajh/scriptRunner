@@ -1,6 +1,5 @@
-demo
+test
 192.168.147.225
 C:\\Programm\\Files\\WinLogBeat
-emulationA,parallel -u ::: '/home/kali/Desktop/local1.sh 1' '/home/kali/Desktop/local2.sh 2'
-test, pwd
-demo,python3 /home/jh/Desktop/ssh_test.py
+demo,python3 /home/jh/Desktop/example.py
+test,/Users/jiahui/Desktop/jiahui/Work/Internships/now/DSO/work/platform/dso/run.sh

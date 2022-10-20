@@ -1,29 +1,71 @@
 # Developer Guide
 
 ## Table of Contents
-
 1. [Introduction](#1-introduction)
 2. [About this Guide](#2-about-this-guide)
+3. [Installation](#3-installation)
 
-   2.1 [What is in Connoisseur](#21-what-is-in-connoisseur)
+   3.1 [System Requirements](#31-system-requirements)
 
-   2.2 [How to use this Guide](#22-how-to-use-this-guide)
+   3.2 [Installation Instructions](#32-installation-instructions)
 
-3. [Quick start](#3-quick-start)
-4. [Features](#4-features)
+4. [Implementation](#4-implementation)
 
-   4.1 [Review Mode](#41-review-mode)
+   4.1 [Tech Stack](#41-tech-stack)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.1 [Add a Review](#411-add-a-review)
+   4.2 [General Architecture](#42-general-architecture)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.2 [List Reviews](#412-list-reviews)
+   4.3 [Configuration File](#43-configuration-file)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.3 [Sort Reviews](#413-sort-reviews)
+   4.4 [Generate Config](#44-generate-config)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.4 [View a Review](#414-view-a-review)
+   4.5 [Start Instances](#45-start-instances)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.5 [Edit a Review](#415-edit-a-review)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.6 [Delete a Review](#416-delete-a-review)
+## 1. Introduction
 
-   4.2 [Recommendation Mode](#42-recommendation-mode)
+This application seeks to help in managing and streamlining adversary emulation. 
+
+## 2. About this Guide
+
+This guide would explain how the application is implemented and some limitations of this application. You can refer to the [userguide](userguide.md) for more information about how you can use the application.
+
+## 3. Installation
+
+### 3.1 System Requirements
+
+This application requires Python 3.10 or later to work. You can either install the latest version of python on your system directly or install it in a virtual environment.
+
+Prefered Operating System: Linux or MacOS
+
+You can run the application on Windows system by running the `main.py` file directly in the `/app` folder. You would need to change the `start_instances.sh` to a script that is compatible with Windows OS for starting of instances, or do it outside of the app.
+
+### 3.2 Installation Instructions
+
+1. Install tkinter using the command below.
+
+    `sudo apt install python3-tk -y`
+
+2. Install the rest of the depenencies using the requirements.txt file using the command below.
+
+    `pip install -r requirements.txt`
+
+## 4. Implementation
+
+
+### 4.1 Tech Stack
+
+Tkinter package is used to build this application and custom_tkinter is used to improve on the interface of the application. In order to use the tkinter package, Python3.10 is required. You can refer to the links below to find out more about the packages and libraries.
+
+tkinter: https://docs.python.org/3/library/tkinter.html 
+
+custom_tkinter: https://github.com/TomSchimansky/CustomTkinter 
+
+### 4.2 General Architecture
+
+The python code that is used to build the application resides in the `app` folder. `data.txt` is where data is stored, and `run.sh` allows users to run the application without having to open the `app` folder.
+
+`main.py` builds the general homepage or landing page of the application. 
+
+The popup windows are in `pop.py`.
+

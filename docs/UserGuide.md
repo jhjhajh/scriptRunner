@@ -22,6 +22,7 @@
 
 9. [Start Emulation](#9-start-emulation)
 
+10. [Others](#10-others)
 
 
 ## 1. Introduction
@@ -85,6 +86,7 @@ You can also add or edit the code after ssh to the domain and snapshots you want
 
 This is an example of how it can be done.
 `virsh snapshot-revert --domain win10-clone --snapshotname "demo"`
+
 `virsh reboot --domain win10-clone`
 
 ## 6. Configure
@@ -118,3 +120,9 @@ Once you return to the main application window, click `Refresh` on the left of t
 Start emulation by clicking the `Start` button next to the emulation flow name. Ensure that your script starts the winlogbeat service before the actual simulation, and stops it after that. You should be able to see logs being piped to Elastic Search after starting the simulation.
 
 This application supports different simulations running at the same time, so you can start multiple adversary emulations as desired.
+
+For your reference, the `demo` emulation flow runs the `example.py` script.
+
+## 10. Others
+
+1. 
