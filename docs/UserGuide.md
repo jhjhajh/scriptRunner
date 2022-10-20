@@ -12,6 +12,18 @@
 
 4. [Starting the application](#4-starting-the-application)
 
+5. [Start Instances](#5-start-instances)
+
+6. [Configure](#6-configure)
+
+7. [Generate yml file](#7-generate-yml-file)
+
+8. [Add Emulation Flow](#8-add-emulation-flow)
+
+9. [Start Emulation](#9-start-emulation)
+
+
+
 ## 1. Introduction
 
 This application seeks to help in managing and streamlining adversary emulation. 
@@ -46,9 +58,63 @@ Once the dependencies are installed, run the `run.sh` file to start the applicat
 
     `chmod +x run.sh`
 
-2. Run the following command on terminal
+2. Give permission to run a script required by the app.
+
+    `chmod +x /app/start_instances.sh` or
+    `chmod +x {path}/app/start_instances.sh`
+
+3. Run the following command on terminal
 
     `./run.sh` or `{path}/run.sh`
 
 If it runs successfully, you should see this application.
+
 ![Figure 1 - start](./Picture1.png)
+
+## 5. Start instances
+
+The `Start Instances` button on the bottom right hand corner would start the instances of virtual machines in the KVM. 
+
+You can edit the `start_instances.sh` in the `app` folder to edit the username and ip address to the server you are using.
+
+You can also add or edit the code after ssh to the domain and snapshots you want to use in the following format.
+
+`virsh snapshot-revert --domain {domain_name} --snapshotname "snapshot_name}"`
+
+`virsh reboot --domain {domain_name}`
+
+This is an example of how it can be done.
+`virsh snapshot-revert --domain win10-clone --snapshotname "demo"`
+`virsh reboot --domain win10-clone`
+
+## 6. Configure
+
+Click the `configure` button on the left. The following popup would appear
+
+![Figure 2 - configure](./configure.png)
+
+You can set the Index Name for the Elastic Search's index, IP address for the Elastic Search's IP address and path where you want to save the generated WinLogBeat yml file on your local machine before transfering the file over to the machines you want to log.
+
+## 7. Generate yml file
+
+Once you are done with the configuration, click the `Generate` button on the bottom right hand side of the application to generate the winlogbeat yml file, which should be saved in the path you have specified. Transfer the yml file to the target machines before starting simulation.
+
+When the winlogbeat yml file is generated, the Elastic Search Index would be "winlogbeat-" followed by index name specified in the configuration, followed by datetime where the yml file is generated (e.g. `winlogbeat-demo202210191016`, winlogbeat-{name}{year}{month}{day}{hour}{minute}).
+
+
+## 8. Add Emulation Flow
+
+To include a new emulation flow/ automation script, click on the `Add Emulation` button on the left of the application. A popup for you to add emulation flow would appear as shown below.
+
+
+![Figure 3 - Add Emulation](./addemulation.png)
+
+Enter the emulation flow name consisting of only alphanumeric characters. Select the script to include by clicking on the `Select File` button. Click `Add button` when you have entered the name and selected the file. Click `Done` when you are done.
+
+Once you return to the main application window, click `Refresh` on the left of the application for the newly added emulation flows to appear.
+
+## 9. Start Emulation
+
+Start emulation by clicking the `Start` button next to the emulation flow name. Ensure that your script starts the winlogbeat service before the actual simulation, and stops it after that. You should be able to see logs being piped to Elastic Search after starting the simulation.
+
+This application supports different simulations running at the same time, so you can start multiple adversary emulations as desired.
