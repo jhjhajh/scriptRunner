@@ -125,4 +125,10 @@ For your reference, the `demo` emulation flow runs the `example.py` script.
 
 ## 10. Others
 
-1. 
+1. Light, Dark and System Default
+
+You can switch between Light, Dark and System Default mode by clicking the button on the button left of the application.
+
+2. Link to UserGuide
+
+If you need help with using the application, you can click the `userguide` button on the bottom left of the application, above the switch mode button.
