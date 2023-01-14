@@ -1,2 +1,2 @@
-# dso
+# script runner
 readme
