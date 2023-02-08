@@ -1,0 +1,5 @@
+test
+192.168.147.225
+C:\\Programm\\Files\\WinLogBeat
+demo,python3 /home/jh/Desktop/example.py
+test,/Users/jiahui/Desktop/jiahui/Work/Internships/now/DSO/work/platform/dso/run.sh
